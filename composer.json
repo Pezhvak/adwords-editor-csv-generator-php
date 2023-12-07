@@ -1,0 +1,41 @@
+{
+    "name": "pezhvak/adwords-editor-csv-generator-php",
+    "description": "Alternative way to build campaigns with PHP since official APIs need approval.",
+    "keywords": [
+        "pezhvak",
+        "adwords-editor-csv-generator-php"
+    ],
+    "homepage": "https://github.com/pezhvak/adwords-editor-csv-generator",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Pezhvak",
+            "email": "me@pezhvak.dev",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pezhvak\\AdwordsEditorCsvGenerator\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pezhvak\\AdwordsEditorCsvGenerator\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
