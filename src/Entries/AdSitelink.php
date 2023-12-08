@@ -115,10 +115,6 @@ class AdSitelink extends EntryBase
             throw new \Exception('Campaign name is required');
         }
 
-        if($this->adGroupName === null) {
-            throw new \Exception('Ad group name is required');
-        }
-
         if($this->linkText === null) {
             throw new \Exception('Link text is required');
         }
