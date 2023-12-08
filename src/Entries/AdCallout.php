@@ -44,7 +44,7 @@ class AdCallout extends EntryBase
 
     public function setCalloutText(string $text): AdCallout
     {
-        if(strlen($text) > 25) {
+        if(mb_strlen($text) > 25) {
             throw new \Exception('Callout text must be less than 25 characters');
         }
         $this->calloutText = $text;
