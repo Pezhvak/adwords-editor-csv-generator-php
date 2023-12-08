@@ -176,6 +176,12 @@ class AdPriceAssets extends EntryBase
         return $this;
     }
 
+    public function setHeader(string $header, int $number): AdPriceAssets
+    {
+        $this->{'header_' . $number} = $header;
+        return $this;
+    }
+
     public function setHeaders(array $headers): AdPriceAssets
     {
         if (count($headers) > 8) {
@@ -232,6 +238,12 @@ class AdPriceAssets extends EntryBase
     public function setDescription8(string $description_8): AdPriceAssets
     {
         $this->description_8 = $description_8;
+        return $this;
+    }
+
+    public function setDescription(string $description, int $number): AdPriceAssets
+    {
+        $this->{'description_' . $number} = $description;
         return $this;
     }
 
@@ -294,6 +306,12 @@ class AdPriceAssets extends EntryBase
         return $this;
     }
 
+    public function setPrice(string $price, int $number): AdPriceAssets
+    {
+        $this->{'price_' . $number} = $price;
+        return $this;
+    }
+
     public function setPrices(array $prices): AdPriceAssets
     {
         if (count($prices) > 8) {
@@ -350,6 +368,12 @@ class AdPriceAssets extends EntryBase
     public function setPriceUnit8(AdPriceUnit $price_unit_8): AdPriceAssets
     {
         $this->price_unit_8 = $price_unit_8;
+        return $this;
+    }
+
+    public function setPriceUnit(AdPriceUnit $price_unit, int $number): AdPriceAssets
+    {
+        $this->{'price_unit_' . $number} = $price_unit;
         return $this;
     }
 
@@ -412,6 +436,23 @@ class AdPriceAssets extends EntryBase
         return $this;
     }
 
+    public function setFinalUrl(string $final_url, int $number): AdPriceAssets
+    {
+        $this->{'final_url_' . $number} = $final_url;
+        return $this;
+    }
+
+    public function setFinalUrls(array $final_urls): AdPriceAssets
+    {
+        if (count($final_urls) > 8) {
+            throw new \Exception('Maximum of 8 final urls are allowed');
+        }
+        foreach ($final_urls as $key => $final_url) {
+            $this->{'final_url_' . ($key + 1)} = $final_url;
+        }
+        return $this;
+    }
+
     public function setFinalMobileUrl1(string $final_mobile_url_1): AdPriceAssets
     {
         $this->final_mobile_url_1 = $final_mobile_url_1;
@@ -460,16 +501,6 @@ class AdPriceAssets extends EntryBase
         return $this;
     }
 
-    public function setFinalUrls(array $final_urls): AdPriceAssets
-    {
-        if (count($final_urls) > 8) {
-            throw new \Exception('Maximum of 8 final urls are allowed');
-        }
-        foreach ($final_urls as $key => $final_url) {
-            $this->{'final_url_' . ($key + 1)} = $final_url;
-        }
-        return $this;
-    }
 
     /**
      * @return array<string,mixed>
