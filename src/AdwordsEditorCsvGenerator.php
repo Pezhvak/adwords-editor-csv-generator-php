@@ -302,7 +302,10 @@ class AdwordsEditorCsvGenerator
         foreach ($this->_columns as $value) {
             $blank_row[strtolower(str_replace(' ', '-', $value))] = '';
         }
-        fputcsv($this->_filePointer, array_merge($blank_row, $data), $this->_settings['delimiter'], $this->_settings['enclosure'], eol: "\r\n");
+        $row = array_merge($blank_row, $data);
+        // ensure row is UTF-8 encoded
+        $row = array_map("utf8_decode", $row);
+        fputcsv($this->_filePointer, $row, $this->_settings['delimiter'], $this->_settings['enclosure'], eol: "\r\n");
     }
 
     /**
