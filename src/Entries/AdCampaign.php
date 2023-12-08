@@ -191,6 +191,14 @@ class AdCampaign extends EntryBase
         return $structuredSnippets;
     }
 
+    public function createSitelink(): AdSitelink
+    {
+        $sitelink = new AdSitelink($this->_adCsvGenerator);
+        $sitelink->setCampaignName($this->name);
+        $this->_adCsvGenerator->addEntry($sitelink);
+        return $sitelink;
+    }
+
     /**
      * @return array<string,mixed>
      */
