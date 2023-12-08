@@ -210,6 +210,16 @@ class AdResponsiveSearch extends EntryBase
         return $this;
     }
 
+    public function setHeadline(string $headline, int $number, int $position = null): AdResponsiveSearch
+    {
+        if(!is_null($position)) {
+            $this->_validatePosition($position);
+            $this->{'headline_' . $number . '_position'} = $position;
+        }
+        $this->{'headline_' . $number} = $headline;
+        return $this;
+    }
+
     public function setHeadlines(array $headlines): AdResponsiveSearch
     {
         if (count($headlines) > 15) {
@@ -326,6 +336,13 @@ class AdResponsiveSearch extends EntryBase
         return $this;
     }
 
+    public function setHeadlinePosition(int $position, int $number): AdResponsiveSearch
+    {
+        $this->_validatePosition($position);
+        $this->{'headline_' . $number . '_position'} = $position;
+        return $this;
+    }
+
     public function setHeadlinePositions(array $positions): AdResponsiveSearch
     {
         if (count($positions) > 15) {
@@ -366,6 +383,16 @@ class AdResponsiveSearch extends EntryBase
         return $this;
     }
 
+    public function setDescription(string $description, int $number, int $position = null): AdResponsiveSearch
+    {
+        if(!is_null($position)) {
+            $this->_validatePosition($position);
+            $this->{'description_' . $number . '_position'} = $position;
+        }
+        $this->{'description_' . $number} = $description;
+        return $this;
+    }
+
     public function setDescriptions(array $descriptions): AdResponsiveSearch
     {
         if (count($descriptions) > 4) {
@@ -402,6 +429,13 @@ class AdResponsiveSearch extends EntryBase
     {
         $this->_validatePosition($position);
         $this->description_4_position = $position;
+        return $this;
+    }
+
+    public function setDescriptionPosition(int $position, int $number): AdResponsiveSearch
+    {
+        $this->_validatePosition($position);
+        $this->{'description_' . $number . '_position'} = $position;
         return $this;
     }
 
