@@ -233,7 +233,7 @@ class AdwordsEditorCsvGenerator
 
     private function _writeHeader(): void
     {
-        fputcsv($this->_filePointer, $this->_columns, $this->_settings['delimiter'], $this->_settings['enclosure']);
+        fputcsv($this->_filePointer, $this->_columns, $this->_settings['delimiter'], $this->_settings['enclosure'], eol: "\r\n");
     }
 
     public function addEntry(object $entry): AdwordsEditorCsvGenerator
@@ -302,7 +302,7 @@ class AdwordsEditorCsvGenerator
         foreach ($this->_columns as $value) {
             $blank_row[strtolower(str_replace(' ', '-', $value))] = '';
         }
-        fputcsv($this->_filePointer, array_merge($blank_row, $data), $this->_settings['delimiter'], $this->_settings['enclosure']);
+        fputcsv($this->_filePointer, array_merge($blank_row, $data), $this->_settings['delimiter'], $this->_settings['enclosure'], eol: "\r\n");
     }
 
     /**
