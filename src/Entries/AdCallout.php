@@ -68,12 +68,8 @@ class AdCallout extends EntryBase
      */
     public function toArray(): array
     {
-        if($this->campaignName === null) {
-            throw new \Exception('Campaign name is required');
-        }
-
-        if($this->adGroupName === null) {
-            throw new \Exception('Ad group name is required');
+        if($this->campaignName === null && $this->adGroupName === null) {
+            throw new \Exception('Campaign name or ad group name is required');
         }
 
         if($this->calloutText === null) {

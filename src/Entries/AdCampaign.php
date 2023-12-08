@@ -183,6 +183,14 @@ class AdCampaign extends EntryBase
         return $priceAssets;
     }
 
+    public function createCallout(): AdCallout
+    {
+        $callout = new AdCallout($this->_adCsvGenerator);
+        $callout->setCampaignName($this->name);
+        $this->_adCsvGenerator->addEntry($callout);
+        return $callout;
+    }
+
     public function createStructuredSnippets(): AdStructuredSnippets
     {
         $structuredSnippets = new AdStructuredSnippets($this->_adCsvGenerator);
