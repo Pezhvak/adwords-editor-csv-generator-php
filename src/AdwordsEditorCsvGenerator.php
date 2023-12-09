@@ -4,6 +4,7 @@ namespace Pezhvak\AdwordsEditorCsvGenerator;
 
 use Pezhvak\AdwordsEditorCsvGenerator\Entries\AdBusinessLogo;
 use Pezhvak\AdwordsEditorCsvGenerator\Entries\AdCampaign;
+use Pezhvak\AdwordsEditorCsvGenerator\Entries\AdImage;
 use Pezhvak\AdwordsEditorCsvGenerator\Entries\AdImageExtension;
 
 class AdwordsEditorCsvGenerator
@@ -285,7 +286,7 @@ class AdwordsEditorCsvGenerator
     {
         $images = [];
         foreach ($this->_entries as $entry) {
-            if($entry instanceof AdImageExtension || $entry instanceof AdBusinessLogo) {
+            if($entry instanceof AdImageExtension || $entry instanceof AdImage || $entry instanceof AdBusinessLogo) {
                 $images[] = $entry->image;
             }
         }
