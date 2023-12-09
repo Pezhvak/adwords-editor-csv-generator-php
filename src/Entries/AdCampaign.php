@@ -151,6 +151,14 @@ class AdCampaign extends EntryBase
         return $imageExtension;
     }
 
+    public function createImage(): AdImage
+    {
+        $image = new AdImage($this->_adCsvGenerator);
+        $image->setCampaignName($this->name);
+        $this->_adCsvGenerator->addEntry($image);
+        return $image;
+    }
+
     public function createBusinessName(): AdBusinessName
     {
         $businessName = new AdBusinessName($this->_adCsvGenerator);
