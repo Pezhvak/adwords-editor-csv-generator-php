@@ -305,7 +305,7 @@ class AdwordsEditorCsvGenerator
         }
         $row = array_merge($blank_row, $data);
         // ensure row is UTF-8 encoded
-        $row = array_map("utf8_decode", $row);
+        // $row = array_map("utf8_decode", $row);
         fputcsv($this->_filePointer, $row, $this->_settings['delimiter'], $this->_settings['enclosure'], eol: "\r\n");
     }
 
