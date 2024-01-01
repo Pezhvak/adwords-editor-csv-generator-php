@@ -23,8 +23,13 @@ class AdCampaign extends EntryBase
     public ?string $bidStrategyName = null;
     public ?float $targetImpressionShare = null;
     public ?float $maximumCpcBidLimit = null;
+    public ?float $desktopBidAdjustment = null;
+    public ?float $mobileBidAdjustment = null;
+    public ?float $tabletBidAdjustment = null;
+    public ?float $tvScreenBidAdjustment = null;
     public ?array $languages = null;
     public ?AdLocation $adLocation;
+    public ?array $networks = null;
     private AdwordsEditorCsvGenerator $_adCsvGenerator;
 
     private $_data = [];
@@ -38,6 +43,12 @@ class AdCampaign extends EntryBase
         $this->status = AdStatus::ENABLED;
         $this->budgetType = AdBudgetType::DAILY;
         $this->_adCsvGenerator = $adCsvGenerator;
+    }
+
+    public function setNetworks(array $networks): AdCampaign
+    {
+        $this->networks = $networks;
+        return $this;
     }
 
     public function setStatus(AdStatus $status): AdCampaign
@@ -106,6 +117,30 @@ class AdCampaign extends EntryBase
     public function setMaximumCpcBidLimit(float $maximumCpcBidLimit): AdCampaign
     {
         $this->maximumCpcBidLimit = $maximumCpcBidLimit;
+        return $this;
+    }
+
+    public function setDesktopBidAdjustment(float $desktopBidAdjustment): AdCampaign
+    {
+        $this->desktopBidAdjustment = $desktopBidAdjustment;
+        return $this;
+    }
+
+    public function setMobileBidAdjustment(float $mobileBidAdjustment): AdCampaign
+    {
+        $this->mobileBidAdjustment = $mobileBidAdjustment;
+        return $this;
+    }
+
+    public function setTabletBidAdjustment(float $tabletBidAdjustment): AdCampaign
+    {
+        $this->tabletBidAdjustment = $tabletBidAdjustment;
+        return $this;
+    }
+
+    public function setTvScreenBidAdjustment(float $tvScreenBidAdjustment): AdCampaign
+    {
+        $this->tvScreenBidAdjustment = $tvScreenBidAdjustment;
         return $this;
     }
 
@@ -249,9 +284,14 @@ class AdCampaign extends EntryBase
             'maximum-cpc-bid-limit' => $this->maximumCpcBidLimit ?? '',
             'target-impression-share' => $this->targetImpressionShare.'%' ?? '',
             'languages' => implode(';', $this->enumArrayToStringArray($this->languages ?? [])),
+            'desktop-bid-modifier' => $this->desktopBidAdjustment ?? '',
+            'mobile-bid-modifier' => $this->mobileBidAdjustment ?? '',
+            'tablet-bid-modifier' => $this->tabletBidAdjustment ?? '',
+            'tv-screen-bid-modifier' => $this->tvScreenBidAdjustment ?? '',
             'ad-location' => $this->adLocation?->value ?? '',
             'start-date' => $this->startDate?->format('Y-m-d') ?? '',
             'end-date' => $this->endDate?->format('Y-m-d') ?? '',
+            'networks' => implode(';', $this->enumArrayToStringArray($this->networks ?? [])),
         ];
 
         return $this->_data;
